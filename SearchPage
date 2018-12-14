@@ -1,0 +1,29 @@
+//Google Search page/finding elements
+package com.test;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+import java.util.concurrent.TimeUnit;
+
+public class SearchPage {
+
+    WebDriver driver;
+    By searchText = By.xpath("//input[@name='q']");
+    By searchBtn = By.xpath("//input[@name='btnK']");
+
+        public SearchPage(WebDriver driver)
+        {
+            this.driver= driver;
+
+        }
+        public void enterText()
+        {
+            driver.findElement(searchText).sendKeys("test automation is awesome");
+            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        }
+    public void clickSearch() {
+        driver.findElement(searchBtn).submit();
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+    }
+    }
