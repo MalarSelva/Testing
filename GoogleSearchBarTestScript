@@ -1,0 +1,36 @@
+//Test script for google search bar
+
+import java.util.List;
+
+public class SearchBarTest extends ComBaseTest{
+    /*
+      Test - 1 # Validate Google Search bar
+     */
+    @Test(description = "Google Search Bar Test")
+    public void Test1() throws Exception
+    {
+        SearchPage searchPage = new SearchPage(driver);
+        //Accessing google URL
+        String url = "https://www.google.com";
+        driver.get(url);
+
+        //Entering text in search bar
+        searchPage.enterText();
+
+        //Submitting Search
+        searchPage.clickSearch();
+
+        //Getting all title of the search page and printing in console
+
+        List<WebElement> alllinks = driver.findElements(By.tagName("a"));
+
+        for(int i=0;i<alllinks.size();i++)
+            System.out.println(alllinks.get(i).getText());
+
+        for(int i=0;i<alllinks.size();i++){
+            alllinks.get(i);
+        }
+
+
+    }
+}
