@@ -1,0 +1,37 @@
+//BaseTest to read browser
+package BaseTest;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.*;
+import org.yaml.snakeyaml.Yaml;
+
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
+//This is to get browser name and URL from YML file
+public class ComBaseTest {
+    public WebDriver driver;
+    //get from yml file
+
+    @Parameters({"browser"})
+    @BeforeTest(alwaysRun = true)
+    public void beforeTestMethod(@Optional("chrome") String browser) {
+        if (browser.equalsIgnoreCase("chrome")) {
+            String chromeDrivberPath = "C:\\chromedriver.exe";
+            System.setProperty("webdriver.chrome.driver", chromeDrivberPath);
+            driver = new ChromeDriver();
+            driver.manage().window().maximize();
+            driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+        } else if (browser.equalsIgnoreCase("ff")) {
+            System.setProperty("webdriver.firefox.marionette","C:\\geckodriver.exe");
+            driver = new FirefoxDriver();
+            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        }
+    }
+    @AfterTest
+    public void teardown () {
+        driver.quit();
+    }
+}
+
