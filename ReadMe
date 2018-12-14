@@ -1,0 +1,11 @@
+ReadMe File:
+
+Framework setup: Prerequisite
+
+Java as the programming language
+TestNG as the assertion framework
+Maven as the build tool
+WebDriver as the browser automation tool
+IntelliJ as the IDE
+
+Created new maven project and POM.XML as root , added all dependencies in POM.XML
